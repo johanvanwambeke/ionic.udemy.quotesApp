@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
 import { SettingsService } from '../../services/settings';
+import { TabsPage } from '../../tabs/tabs';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { SettingsService } from '../../services/settings';
 })
 export class SettingsPage {
 
-  constructor (private settingsService:SettingsService){}
+  constructor (private settingsService:SettingsService, private navCtrl:NavController){}
 
   onToggle(toggle:Toggle){
     this.settingsService.setBackground(toggle.checked);
@@ -17,5 +18,9 @@ export class SettingsPage {
 
   checkAltBackground(){
     return this.settingsService.isAltBackground();
+  }
+
+  onCloseSettings(){
+    this.navCtrl.setRoot(TabsPage);
   }
 }
