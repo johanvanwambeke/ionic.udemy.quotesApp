@@ -20,9 +20,15 @@ export class FavoritesPage {
     this.quotes = this.quoteService.getFavoriteQuotes(); 
   }
 
-  onViewQuote(Quote:Quote){
+  onViewQuote(quote:Quote){
     //Hier ga ik een modal window open doen om een quote te tonen.
-    const modal = this.modalController.create(QuotePage);
+    const modal = this.modalController.create(QuotePage,quote);
     modal.present();
+    modal.onDidDismiss((remove:boolean)=>{
+      if(remove){
+        this.quoteService.removeQuoteFromFavorites(quote);
+        this.quotes = this.quoteService.getFavoriteQuotes(); 
+      }
+    });
   }
 }
