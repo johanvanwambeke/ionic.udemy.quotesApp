@@ -1,6 +1,7 @@
 import { Quote } from "../Data/quote.interface";
 
 export class QuotesService{
+
     private favoriteQuotes : Quote[] = [];
 
     addQuoteToFavorites(quote:Quote){
@@ -17,5 +18,15 @@ export class QuotesService{
 
     getFavoriteQuotes(){
         return this.favoriteQuotes.slice();
+    }
+
+    isQuoteFavorite(quote: Quote) {
+        return this.favoriteQuotes.find((quoteEl2:Quote)=>{
+            return quoteEl2.id == quote.id;
+        });
+    }
+
+    isFavorite(quote:Quote){
+        return true;
     }
 }

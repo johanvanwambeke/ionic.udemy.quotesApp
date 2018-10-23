@@ -38,4 +38,12 @@ export class QuotesPage {
     );
     alert.present();
   }
+
+  onRemoveFromFavorites(quote:Quote){
+    this.quoteService.removeQuoteFromFavorites(quote);
+  }
+
+  isFavoriteQuote(quote:Quote){
+    return this.quoteService.isQuoteFavorite(quote);
+  }
 }
